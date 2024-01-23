@@ -5,19 +5,29 @@ module.exports = (app) => {
   app.get("/api/pokemons", (req, res) => {
     if (req.query.name) {
       const name = req.query.name;
-      return Pokemon.findAll({
+      const limit = parseInt(req.query.limit) || 5;
+
+      if (name.length < 2) {
+        const message =
+          "Le terme de recherche doit contenir au moins 2 caractères.";
+        return res.status(400).json({ message });
+      }
+      
+      return Pokemon.findAndCountAll({
         where: {
           name: {
             // name est une propriété du modèle Pokemon
-            [Op.eq]: name, // name est le critère de la recherche
+            [Op.like]: `%${name}%`, // name est le critère de la recherche
           },
         },
-      }).then((pokemons) => {
-        const message = `Il y a ${pokemons.length} pokémons qui correspondent au terme de recherche ${name}.`;
-        res.json({ message, data: pokemons });
+        order: ["name"],
+        limit: limit,
+      }).then(({ count, rows }) => {
+        const message = `Il y a ${count} pokémons qui correspondent au terme de recherche ${name}.`;
+        res.json({ message, data: rows });
       });
     } else {
-      Pokemon.findAll()
+      Pokemon.findAll({ order: ["name"] })
         .then((pokemons) => {
           const message = "La liste des pokémons a bien été récupérée.";
           res.json({ message, data: pokemons });
