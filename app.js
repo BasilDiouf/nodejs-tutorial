@@ -1,15 +1,10 @@
 const express = require("express");
-const aws = require("aws-sdk");
 const favicon = require("serve-favicon");
 const bodyParser = require("body-parser");
 const sequelize = require("./src/db/sequelize");
 
 const app = express();
 const port = process.env.PORT || 3306;
-let s3 = new aws.S3({
-  accessKeyId: process.env.S3_KEY,
-  secretAccessKey: process.env.S3_SECRET,
-});
 
 app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
 
@@ -34,7 +29,9 @@ app.use(({ res }) => {
   res.status(404).json({ message });
 });
 
-app.listen(port, s3, () =>
+console.log(process.env.DBHOST);
+
+app.listen(port, () =>
   console.log(
     `Notre application Node est lancée sur le port : http://localhost:${port}`
   )
