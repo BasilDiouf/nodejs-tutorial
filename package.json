@@ -7,8 +7,8 @@
     "node": "20.11.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development nodemon app.js"
+    "start": "SET NODE_ENV=production node app.js",
+    "dev": "SET NODE_ENV=development nodemon app.js"
   },
   "author": "Baaz",
   "license": "ISC",
