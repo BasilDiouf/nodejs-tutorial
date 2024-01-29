@@ -7,11 +7,11 @@ const bcrypt = require("bcrypt");
 
 const sequelize = new Sequelize("pokedex", "root", "", {
   host: "127.0.0.1",
-  dialect: "mariadb",
+  dialect: "mysql",
   dialectOptions: {
     timezone: "Etc/GMT-2",
   },
-  logging: false,
+  logging: true,
 });
 
 const Pokemon = PokemonModel(sequelize, DataTypes);
