@@ -4,14 +4,14 @@ const bodyParser = require("body-parser");
 const sequelize = require("./src/db/sequelize");
 
 const app = express();
-const port = process.env.PORT || 3306;
+const port = process.env.PORT || 3000;
 
 app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
 
 sequelize.initDb();
 
 app.get("/", (req, res) => {
-  res.json("Hello, Heroku ! 👌");
+  res.json("Hello, render ! 👌");
 });
 
 // Ici, nous placerons nos futurs points de terminaison.
