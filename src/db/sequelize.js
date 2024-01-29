@@ -10,6 +10,8 @@ const sequelize = new Sequelize("pokedex", "root", "", {
   dialect: "mysql",
   dialectOptions: {
     timezone: "Etc/GMT-2",
+    socketPath:
+      "C:wamp64\binmariadbmariadb10.10.2includemysqlservermysqlpsimysql_socket",
   },
   logging: true,
 });
