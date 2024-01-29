@@ -7,7 +7,7 @@
     "node": "20.11.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "NODE_ENV=production node app.js",
     "dev": "nodemon app.js"
   },
   "author": "Baaz",
