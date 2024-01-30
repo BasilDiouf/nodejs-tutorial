@@ -6,12 +6,12 @@ const UserModel = require("../models/user");
 const bcrypt = require("bcrypt");
 
 const sequelize = new Sequelize("pokedex", "root", "", {
-  host: "127.0.0.1",
-  dialect: "mysql",
+  host: "localhost",
+  dialect: "mariadb",
   dialectOptions: {
     timezone: "Etc/GMT-2",
   },
-  logging: true,
+  logging: false,
 });
 
 const Pokemon = PokemonModel(sequelize, DataTypes);
