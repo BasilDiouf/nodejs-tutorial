@@ -6,7 +6,7 @@ const UserModel = require("../models/user");
 const bcrypt = require("bcrypt");
 
 const sequelize = new Sequelize("pokedex", "root", "", {
-  host: "localhost",
+  host: "DB_HOST",
   dialect: "mariadb",
   username: "Basil",
   password: "Moncode44",
