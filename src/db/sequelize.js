@@ -8,6 +8,8 @@ const bcrypt = require("bcrypt");
 const sequelize = new Sequelize("pokedex", "root", "", {
   host: "localhost",
   dialect: "mariadb",
+  username: "Basil",
+  password: "Moncode44",
   dialectOptions: {
     timezone: "Etc/GMT-2",
   },
